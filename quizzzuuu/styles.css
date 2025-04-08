@@ -1,0 +1,128 @@
+:root {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  --cream-col: #fffdf2;
+  --black-col: #333;
+  --accent-col: #222;
+  --button-hover: #444;
+}
+
+* {
+  font-weight: 700;
+}
+
+body {
+  background-color: var(--cream-col);
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: var(--cream-col);
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  border: 2px solid var(--black-col);
+}
+
+h1,
+h3 {
+  color: var(--black-col);
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+.question-card,
+.result-card {
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  color: var(--black-col);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  border: #333 solid 3px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--black-col);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.options {
+  margin: 20px 0;
+}
+
+.option {
+  margin: 10px 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type='text']{
+  background-color: var(--cream-col);
+}
+
+label {
+  font-size: 18px;
+  display: block;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--cream-col);
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: 1px solid var(--black-col);
+}
+
+label:hover {
+  background-color: gainsboro;
+  transform: scale(1.05);
+}
+
+
+
+input[type="radio"]:checked + label,input[type="checkbox"]:checked + label {
+  background-color: var(--black-col);
+  color: var(--cream-col);
+  border-color: var(--black-col);
+}
+
+button {
+  padding: 12px 30px;
+  background-color: var(--black-col);
+  color: var(--cream-col);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #444;
+  transform: translateY(-4px);
+}
+
+.result-card {
+  display: none;
+}
