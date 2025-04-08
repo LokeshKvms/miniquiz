@@ -1,4 +1,4 @@
-const questions = [
+const defaultQuestions = [
   {
     question: "Which are known as the oceans from the following?",
     options: ["Pacific", "Nile", "Thames", "Arctic"],
@@ -52,8 +52,13 @@ const questions = [
   },
 ];
 
-let currentQuestion = 0;
-let score = 0;
+if (!localStorage.getItem("questions")) {
+  localStorage.setItem("questions", JSON.stringify(defaultQuestions));
+}
+
+let questions = JSON.parse(localStorage.getItem("questions"));
+let currentQuestion = parseInt(localStorage.getItem("currentQuestion")) || 0;
+let score = parseInt(localStorage.getItem("score")) || 0;
 
 function loadQuestion() {
   const question = questions[currentQuestion];
@@ -126,6 +131,9 @@ function nextQuestion() {
     }
   }
 
+  localStorage.setItem("currentQuestion", currentQuestion + 1);
+  localStorage.setItem("score", score);
+
   currentQuestion++;
 
   if (currentQuestion < questions.length) {
@@ -142,8 +150,14 @@ function showResult() {
 }
 
 function restartQuiz() {
+  localStorage.removeItem("currentQuestion");
+  localStorage.removeItem("score");
+  localStorage.setItem("questions", JSON.stringify(defaultQuestions));
+
+  questions = JSON.parse(localStorage.getItem("questions"));
   currentQuestion = 0;
   score = 0;
+
   document.getElementById("question-card").style.display = "block";
   document.getElementById("result-card").style.display = "none";
   loadQuestion();
